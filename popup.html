@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivacyAI Extension</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="background-container">
+        <div class="bg-image bg-image-1"></div>
+        <div class="bg-image bg-image-2"></div>
+        <div class="bg-image bg-image-3"></div>
+    </div>
+    <div class="gradient-overlay"></div>
+    <div class="neural-pattern"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Setup Screen (shown on first run) -->
+        <div id="setupScreen" class="setup-screen" style="display: none;">
+            <div class="setup-content">
+                <div class="setup-icon">🔐</div>
+                <h2 class="setup-title">Welcome to PrivacyAI</h2>
+                <p class="setup-description">
+                    To get started, you need a Perplexity AI API key. This key stays on your device and is never shared.
+                </p>
+                
+                <div class="setup-steps">
+                    <div class="setup-step">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <a href="https://www.perplexity.ai/settings/api" target="_blank" class="step-link">
+                                Get your free API key from Perplexity AI →
+                            </a>
+                        </div>
+                    </div>
+                    <div class="setup-step">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <p class="step-text">Paste your API key below:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="api-key-input-container">
+                    <input 
+                        type="password" 
+                        id="apiKeyInput" 
+                        class="api-key-input" 
+                        placeholder="pplx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                        spellcheck="false"
+                    >
+                    <button id="toggleApiKeyVisibility" class="toggle-visibility-btn" title="Show/Hide API key">
+                        👁️
+                    </button>
+                </div>
+
+                <button id="saveApiKeyBtn" class="save-api-key-btn">
+                    <span class="btn-text">Save & Start Analyzing</span>
+                    <span class="btn-icon">✓</span>
+                </button>
+
+                <div id="setupError" class="setup-error" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Main App Screen -->
+        <div id="mainScreen" class="main-screen">
+            <!-- Header -->
+            <header class="header">
+                <div class="logo"></div>
+                <h1 class="title">PrivacyAI</h1>
+                <p class="main-statement">Privacy analysis for the current website</p>
+                <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+            </header>
+
+        <!-- Current URL Display -->
+        <section class="url-section">
+            <div class="url-container">
+                <div class="url-label">Analyzing:</div>
+                <div id="currentUrl" class="current-url">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Auto Analysis Status -->
+        <section class="status-section">
+            <div id="statusContainer" class="status-container">
+                <div class="status-message">
+                    <span class="status-icon">🤖</span>
+                    <span id="statusText">We automatically analyze privacy policies when you visit new websites</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section">
+            <div id="resultsContainer" class="results-container">
+                <div id="resultsContent" class="results-content">
+                    <p class="initial-message">
+                        🤖 PrivacyAI automatically analyzes privacy policies when you visit new websites. Results will appear here shortly.
+                    </p>
+                </div>
+            </div>
+        </section>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

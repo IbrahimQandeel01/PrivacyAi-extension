@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivacyAI Extension - Test Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .test-section h2 {
+            color: #00bfff;
+            margin-top: 0;
+        }
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .test-link {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .test-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #00bfff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .instructions {
+            background: rgba(0, 191, 255, 0.2);
+            border-left: 4px solid #00bfff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+        .badge-low { background: #32CD32; color: black; }
+        .badge-medium { background: #FFD700; color: black; }
+        .badge-high { background: #FF6B6B; color: white; }
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 PrivacyAI Extension</h1>
+        <p class="subtitle">Test Page - Verify Your Installation</p>
+
+        <div class="instructions">
+            <h2>📋 How to Test</h2>
+            <ol>
+                <li>Make sure you've installed the PrivacyAI extension in Chrome</li>
+                <li>Add your Perplexity API key to <code>config.js</code></li>
+                <li>Click on any test link below</li>
+                <li>Click the PrivacyAI extension icon in your toolbar</li>
+                <li>Wait 5-10 seconds for the AI analysis to complete</li>
+                <li>View the privacy risk rating and detailed analysis</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h2>🧪 Test Websites</h2>
+            <p>Click these links to test the extension's privacy analysis:</p>
+            
+            <div class="test-links">
+                <a href="https://www.google.com" class="test-link" target="_blank">
+                    <strong>Google</strong><br>
+                    <small>Search Engine</small>
+                </a>
+                <a href="https://www.facebook.com" class="test-link" target="_blank">
+                    <strong>Facebook</strong><br>
+                    <small>Social Media</small>
+                </a>
+                <a href="https://www.amazon.com" class="test-link" target="_blank">
+                    <strong>Amazon</strong><br>
+                    <small>E-Commerce</small>
+                </a>
+                <a href="https://www.twitter.com" class="test-link" target="_blank">
+                    <strong>Twitter/X</strong><br>
+                    <small>Social Media</small>
+                </a>
+                <a href="https://www.github.com" class="test-link" target="_blank">
+                    <strong>GitHub</strong><br>
+                    <small>Code Repository</small>
+                </a>
+                <a href="https://www.wikipedia.org" class="test-link" target="_blank">
+                    <strong>Wikipedia</strong><br>
+                    <small>Encyclopedia</small>
+                </a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎯 What to Look For</h2>
+            <p><strong>Extension Badge:</strong></p>
+            <span class="status-badge badge-low">L = Low Risk</span>
+            <span class="status-badge badge-medium">M = Medium Risk</span>
+            <span class="status-badge badge-high">H = High Risk</span>
+            
+            <p style="margin-top: 20px;"><strong>Popup Information:</strong></p>
+            <ul style="line-height: 1.8;">
+                <li>✅ Privacy Policy Accessibility Status</li>
+                <li>🎯 Risk Level (Low/Medium/High)</li>
+                <li>📋 Analysis Summary</li>
+                <li>💡 User Recommendations</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>⚙️ Extension Features</h2>
+            <ul style="line-height: 1.8;">
+                <li><strong>Automatic Analysis:</strong> Runs in background when you visit websites</li>
+                <li><strong>Smart Caching:</strong> Results saved for 7 days (instant on revisit)</li>
+                <li><strong>AI-Powered:</strong> Uses Perplexity AI's online search capability</li>
+                <li><strong>No Backend:</strong> Works entirely client-side</li>
+                <li><strong>Privacy First:</strong> Only analyzes when needed, respects your privacy</li>
+            </ul>
+        </div>
+
+        <div class="instructions">
+            <h2>🔍 Debugging Tips</h2>
+            <ul>
+                <li>Open Chrome DevTools (F12) → Console tab to see logs</li>
+                <li>Look for messages like "Starting Perplexity AI analysis for..."</li>
+                <li>If you see errors, check your API key in <code>config.js</code></li>
+                <li>First analysis takes 5-15 seconds, subsequent visits are instant</li>
+                <li>Check <code>chrome://extensions/</code> for any error messages</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; opacity: 0.8;">
+            <p>📚 For more information, see <code>README.md</code> and <code>SETUP_GUIDE.md</code></p>
+            <p style="font-size: 0.9em;">Powered by Perplexity AI | Built with ❤️</p>
+        </div>
+    </div>
+</body>
+</html>

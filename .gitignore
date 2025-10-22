@@ -1,0 +1,38 @@
+# PrivacyAI Extension - Git Ignore
+
+# IMPORTANT: Protect your API key!
+# Consider creating a config.example.js with dummy values
+# and keep your actual config.js local only
+
+# If you've already added your API key to config.js,
+# you may want to create config.example.js and add config.js here:
+# config.js
+
+# Chrome extension temporary files
+*.crx
+*.pem
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
