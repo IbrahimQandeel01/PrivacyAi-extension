@@ -82,7 +82,13 @@ function shouldSkipUrl(url) {
         'chrome-extension://',
         'edge://',
         'about:',
-        'privacy-ai.netlify.app'
+        'privacy-ai.netlify.app',
+        'localhost',
+        '127.0.0.1',
+        '0.0.0.0',
+        '192.168.',      // Local network IPs
+        '10.',           // Private network IPs
+        'file://'        // Local files
     ];
     
     return skipPatterns.some(pattern => url.includes(pattern));
@@ -189,9 +195,9 @@ async function callPerplexityAPI(url, retryCount = 0) {
             throw new Error('API key not configured. Please set your Perplexity API key in the extension popup.');
         }
         
-        const prompt = `Analyze the privacy policy of the website: ${url}
+        const prompt = `Search the internet and analyze the privacy policy of the website: ${url}
 
-Please search for and analyze the privacy policy of this website. Provide your analysis in the following JSON format ONLY, with no additional text or explanation:
+Find and analyze this website's privacy policy. Search for it on the site itself, subdomains, or related pages. Provide your analysis in the following JSON format ONLY, with no additional text or explanation:
 
 {
     "accessible": true or false (whether a privacy policy exists and is accessible),
@@ -204,6 +210,8 @@ Risk Level Guidelines:
 - Low: Clear privacy policy, minimal data collection, transparent practices, strong user controls
 - Medium: Some data collection concerns, third-party sharing, or unclear sections
 - High: Extensive data collection, broad sharing rights, vague terms, or no accessible privacy policy
+
+Important: If you cannot find a privacy policy after searching, set "accessible" to false and provide appropriate risk level and recommendations.
 
 Respond ONLY with the JSON object, nothing else.`;
 
@@ -228,11 +236,12 @@ Respond ONLY with the JSON object, nothing else.`;
                     }
                 ],
                 max_tokens: 1000,
-                temperature: 0.2,
-                top_p: 0.9,
-                return_citations: false,
-                search_domain_filter: [new URL(url).hostname],
-                search_recency_filter: "month"
+                // temperature: 0.2,
+                // top_p: 0.9,
+                return_citations: false
+                // Removed search_domain_filter and search_recency_filter to allow Perplexity
+                // to search more broadly and find privacy policies on subdomains,
+                // external pages, or older (but still valid) policies
             })
         });
 

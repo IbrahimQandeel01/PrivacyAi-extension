@@ -9,6 +9,7 @@ const saveApiKeyBtn = document.getElementById('saveApiKeyBtn');
 const toggleVisibilityBtn = document.getElementById('toggleApiKeyVisibility');
 const setupError = document.getElementById('setupError');
 const settingsBtn = document.getElementById('settingsBtn');
+const clearCacheBtn = document.getElementById('clearCacheBtn');
 
 // DOM elements - Main Screen
 const currentUrlElement = document.getElementById('currentUrl');
@@ -139,6 +140,65 @@ async function showSettings() {
     showSetupScreen();
 }
 
+// Clear all cache
+async function clearAllCache() {
+    try {
+        // Show confirmation
+        if (!confirm('Are you sure you want to clear all cached analysis results?\n\nهل أنت متأكد من حذف جميع نتائج التحليل المحفوظة؟')) {
+            return;
+        }
+        
+        // Get all storage items
+        const allItems = await chrome.storage.local.get(null);
+        
+        // Filter out only analysis cache items (keep API key)
+        const keysToRemove = Object.keys(allItems).filter(key => 
+            key.startsWith('analysis_')
+        );
+        
+        // Remove all analysis cache items
+        if (keysToRemove.length > 0) {
+            await chrome.storage.local.remove(keysToRemove);
+            
+            // Show success message
+            setupError.textContent = `✅ Successfully cleared ${keysToRemove.length} cached analysis results!\n\n✅ تم حذف ${keysToRemove.length} نتيجة تحليل محفوظة بنجاح!`;
+            setupError.style.display = 'block';
+            setupError.style.background = 'rgba(50, 205, 50, 0.1)';
+            setupError.style.borderColor = 'rgba(50, 205, 50, 0.3)';
+            setupError.style.color = '#32CD32';
+            
+            // Hide message after 3 seconds
+            setTimeout(() => {
+                setupError.style.display = 'none';
+                setupError.style.background = '';
+                setupError.style.borderColor = '';
+                setupError.style.color = '';
+            }, 3000);
+        } else {
+            // No cache to clear
+            setupError.textContent = 'ℹ️ No cached data to clear.\n\nℹ️ لا توجد بيانات محفوظة للحذف.';
+            setupError.style.display = 'block';
+            setupError.style.background = 'rgba(0, 191, 255, 0.1)';
+            setupError.style.borderColor = 'rgba(0, 191, 255, 0.3)';
+            setupError.style.color = '#00bfff';
+            
+            setTimeout(() => {
+                setupError.style.display = 'none';
+                setupError.style.background = '';
+                setupError.style.borderColor = '';
+                setupError.style.color = '';
+            }, 3000);
+        }
+        
+        console.log(`Cleared ${keysToRemove.length} cache items`);
+        
+    } catch (error) {
+        console.error('Error clearing cache:', error);
+        setupError.textContent = '❌ Error clearing cache. Please try again.\n\n❌ خطأ في حذف الكاش. حاول مرة أخرى.';
+        setupError.style.display = 'block';
+    }
+}
+
 // Setup event listeners
 function setupEventListeners() {
     // Setup screen events
@@ -168,6 +228,10 @@ function setupEventListeners() {
     
     if (settingsBtn) {
         settingsBtn.addEventListener('click', showSettings);
+    }
+    
+    if (clearCacheBtn) {
+        clearCacheBtn.addEventListener('click', clearAllCache);
     }
 }
 

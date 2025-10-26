@@ -602,6 +602,35 @@ body {
     line-height: 1.4;
 }
 
+.clear-cache-btn {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 10px;
+    background: rgba(255, 107, 107, 0.15);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 12px;
+    color: #FF6B6B;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.clear-cache-btn:hover {
+    background: rgba(255, 107, 107, 0.25);
+    border-color: rgba(255, 107, 107, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.clear-cache-btn:active {
+    transform: translateY(0);
+}
+
 .settings-btn {
     position: absolute;
     top: 15px;
